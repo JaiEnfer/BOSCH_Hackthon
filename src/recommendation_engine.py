@@ -21,7 +21,7 @@ def transformation(input_data):
 
 def get_recommendations(user_requirements):
     # Load material data
-    input_data = 'material_dataset.csv'
+    input_data = './material_dataset.csv'
     material_data = pd.read_csv(input_data)
 
     # Extract only the properties columns for comparison
