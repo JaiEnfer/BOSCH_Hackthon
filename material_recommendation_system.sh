@@ -2,6 +2,7 @@
 
 # Install necessary dependencies
 pip install pandas scikit-learn
+pip install streamlit
 
 # Copy Python files and CSV data
 cp gui.py recommendation_engine.py material_properties.csv /path/to/installation/directory
