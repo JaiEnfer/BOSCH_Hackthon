@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 
 def transformation(input_data):
     dataset = pd.read_csv(input_date)
@@ -25,10 +25,10 @@ def get_recommendations(user_requirements):
     material_data = pd.read_csv(input_data)
 
     # Extract only the properties columns for comparison
-    material_properties = material_data.drop(columns=['Material'])
+    material_properties = material_data.drop(columns=['Material', 'Material Identity'])
 
     # Normalize data
-    scaler = MinMaxScaler()
+    scaler = StandardScaler()
 
     # Fit and transform the data
     material_properties_normalized = scaler.fit_transform(material_properties)
@@ -41,7 +41,6 @@ def get_recommendations(user_requirements):
 
     # Normalize user requirements
     user_requirements_normalized = scaler.transform(user_requirements_df)
-    print(user_requirements_normalized)
 
     # Calculate cosine similarity
     similarities = cosine_similarity(material_properties_normalized, user_requirements_normalized)
@@ -50,6 +49,6 @@ def get_recommendations(user_requirements):
     material_data['Similarity'] = similarities[:,0]
 
     # Sort by similarity
-    recommendations = material_data.sort_vaslues(by='Similarity', ascending=False)
+    recommendations = material_data.sort_values(by='Similarity', ascending=False)
 
-    return recommendations['Material', 'Similarity']
+    return recommendations[['Material', 'Similarity']]

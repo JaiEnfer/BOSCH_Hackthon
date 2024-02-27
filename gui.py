@@ -26,9 +26,10 @@ def recommend_material():
         
         # Get recommendations
         recommendations = get_recommendations(user_requirements)
-        
+        print(recommendations)
         # Display recommendations
-        messagebox.showinfo("Recommendations", recommendations)
+        recommendations_str = recommendations.to_string(index=False)
+        messagebox.showinfo("Recommendations", recommendations_str)
         
     except ValueError as e:
         invalid_field = str(e).split(":")[0].strip()
