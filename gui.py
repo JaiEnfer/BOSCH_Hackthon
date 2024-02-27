@@ -26,7 +26,6 @@ def recommend_material():
         
         # Get recommendations
         recommendations = get_recommendations(user_requirements)
-        print(recommendations)
         # Display recommendations
         recommendations_str = recommendations.to_string(index=False)
         messagebox.showinfo("Recommendations", recommendations_str)
