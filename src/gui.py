@@ -23,4 +23,5 @@ user_requirements = {
 
 if st.button("Get Recommendations"):
     recommendations = get_recommendations(user_requirements)
-    st.write("Recommendations", recommendations)
+    recommendations_str = recommendations.to_string(index=False)
+    st.write("Recommendations", recommendations_str)

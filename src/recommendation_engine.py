@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 
 def transformation(input_data):
     dataset = pd.read_csv(input_date)
@@ -21,14 +21,14 @@ def transformation(input_data):
 
 def get_recommendations(user_requirements):
     # Load material data
-    input_data = './material_dataset.csv'
+    input_data = '/Users/aswin/data/BOSCH_Hackthon/material_dataset.csv'
     material_data = pd.read_csv(input_data)
 
     # Extract only the properties columns for comparison
     material_properties = material_data.drop(columns=['Material'])
 
     # Normalize data
-    scaler = MinMaxScaler()
+    scaler = StandardScaler()
 
     # Fit and transform the data
     material_properties_normalized = scaler.fit_transform(material_properties)
