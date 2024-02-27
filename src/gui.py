@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from recommendation_engine import get_recommendations
+from src.recommendation_engine import get_recommendations
 
 def recommend_material():
     try:
